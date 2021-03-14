@@ -1,0 +1,52 @@
+:root {
+    /* define global colour variables */
+    --primary-colour: #545c52;
+    --sectondary-colour: #c4745a;
+    --tertiary-colour: #dedbd2;
+}
+
+* {
+    /* box model */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----- general body styles ----- */
+body {
+    /* box model */
+    height: 80vh;
+    margin: 20px;
+}
+
+/* ----- header styles ----- */
+header {
+    /* box model */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* ----- main content styles ----- */
+main {
+    /* box model */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: center;
+    margin: 20px 0;
+
+    /* typography */
+    text-align: center;
+}
+
+h1 {
+    /* box model */
+    margin: 20px 0;
+}
+
+button {
+    /* box model */
+    margin: 20px 0;
+}
