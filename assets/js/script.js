@@ -1,9 +1,13 @@
 // ----- page set up -----
 // create references to relevant HTML ids
+var titleEl = document.querySelector("#title");
 var timeEl = document.querySelector("#time-remaining");
+var questionEl = document.querySelector("#question");
+var startEl = document.querySelector("#start-button");
 var choicesEl = document.querySelector("#choices");
 
 // ----- create array of questions for quiz -----
+// TO DO: SHUFFLE THIS ARRAY SO THE ORDER IS DIFFERENT EVERY TIME
 var questions = [
 	{
 		question: "Arrays in JavaScript can be used to store which data types?",
@@ -27,7 +31,7 @@ console.log(questions);
 
 // ----- functions that manipulate the DOM -----
 
-// function that creates a list element for each quiz answer option
+// function that displays the first question and replaces the existing screen text
 var createQuestionEl = function (questionObj) {
 	// --- perform for each of the 4 options ---
 	// create array of only the options
@@ -48,6 +52,16 @@ var createQuestionEl = function (questionObj) {
 		// append the list item to the unordered list
 		choicesEl.appendChild(listItemEl);
 	}
+
+	// remove the page header and the start button from the DOM
+	titleEl.remove();
+	startEl.remove();
+
+	// replace the h2 element content with the question
+	questionEl.textContent = questionObj.question;
 };
 
-createQuestionEl(questions[0]);
+// ----- click to initiate quiz -----
+startEl.addEventListener("click", function () {
+	createQuestionEl(questions[0]);
+});
