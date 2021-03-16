@@ -25,9 +25,26 @@ var questions = [
 		d: "number",
 		correct: 3,
 	},
+	{
+		question: "Arrays in JavaScript can be used to store which data types?",
+		a: "Strings",
+		b: "Numbers",
+		c: "Booleans",
+		d: "All of the above",
+		correct: 4,
+	},
+	{
+		question: "Which of the following is not a data type in JavaScript?",
+		a: "string",
+		b: "object",
+		c: "int",
+		d: "number",
+		correct: 3,
+	},
 ];
 
-console.log(questions);
+// create a counter that tracks the current position in the questions array
+var questionCounter = 0;
 
 // ----- functions that manipulate the DOM -----
 
@@ -71,6 +88,24 @@ var checkCorrect = function (id, questionObj) {
 	}
 };
 
+// function that replaces the current question with the next question
+var replaceQuestion = function (questionObj) {
+	// declare local variables for each relevant element
+	var a = document.querySelector("[answer-id='1']");
+	var b = document.querySelector("[answer-id='2']");
+	var c = document.querySelector("[answer-id='3']");
+	var d = document.querySelector("[answer-id='4']");
+
+	// replace the question text
+	questionEl.textContent = questionObj.question;
+
+	// replace the answer options text
+	a.textContent = questionObj.a;
+	b.textContent = questionObj.b;
+	c.textContent = questionObj.c;
+	d.textContent = questionObj.d;
+};
+
 // ----- click to initiate quiz -----
 startEl.addEventListener("click", function () {
 	createQuestionEl(questions[0]);
@@ -82,5 +117,16 @@ choicesEl.addEventListener("click", function (event) {
 	var id = parseInt(event.target.getAttribute("answer-id"));
 
 	// check that the response is correct with the checkCorrect function
-	checkCorrect(id, questions[0]);
+	checkCorrect(id, questions[questionCounter]);
+
+	// increase the question counter to the next array iteration
+	questionCounter++;
+
+	// if there are remaining questions in the array, display the next question
+	if (questionCounter < questions.length) {
+		replaceQuestion(questions[questionCounter]);
+	} // if there are no remaining questions in the array, end the quiz
+	else {
+		alert("The quiz is over!");
+	}
 });
