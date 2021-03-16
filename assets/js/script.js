@@ -46,6 +46,9 @@ var questions = [
 // create a counter that tracks the current position in the questions array
 var questionCounter = 0;
 
+// create a counter that tracks the user score (correct answer: +1 score)
+var score = 0;
+
 // ----- functions that manipulate the DOM -----
 
 // function that displays the first question and replaces the existing screen text
@@ -82,6 +85,8 @@ var createQuestionEl = function (questionObj) {
 var checkCorrect = function (id, questionObj) {
 	console.log(questionObj.correct);
 	if (id === questionObj.correct) {
+		// increase score by 1 for the correct answer
+		score++;
 		alert("You've picked the correct response!");
 	} else {
 		alert("That's the wrong answer!");
@@ -127,6 +132,6 @@ choicesEl.addEventListener("click", function (event) {
 		replaceQuestion(questions[questionCounter]);
 	} // if there are no remaining questions in the array, end the quiz
 	else {
-		alert("The quiz is over!");
+		alert(`The quiz is over! Your score was ${score}`);
 	}
 });
