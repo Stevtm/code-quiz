@@ -1,8 +1,10 @@
 // ----- page set up -----
 // create references to relevant HTML ids
+var headerEl = document.querySelector("header");
 var titleEl = document.querySelector("#title");
 var timeEl = document.querySelector("#time-remaining");
 var questionEl = document.querySelector("#question");
+var scoreInputEl = document.querySelector("#score-input");
 var startEl = document.querySelector("#start-button");
 var choicesEl = document.querySelector("#choices");
 
@@ -126,13 +128,36 @@ var countdown = function () {
 			} else {
 				clearInterval(timeInterval);
 				timeEl.textContent = "0s";
-				alert(`The quiz is over! Your score was ${score}`);
+				endGame();
 			}
 		} else {
 			clearInterval(timeInterval);
 			timeEl.textContent = "0s";
 		}
 	}, 1000);
+};
+
+// game-end function that opens the high score recording page
+var endGame = function () {
+	// alert the user that the game is over and tell them their score
+	alert(`The quiz is over! Your score was ${score}`);
+
+	// remove the header section and ul from the DOM
+	headerEl.remove();
+	choicesEl.remove();
+
+	// replace the h2 element content with a score saving prompt
+	questionEl.textContent =
+		"The game is over! Please enter your name to record your score.";
+
+	// create a form element and submit button for the player to record their name
+	var formEl = document.createElement("input");
+	var submitEl = document.createElement("button");
+	submitEl.setAttribute("type", "submit");
+	submitEl.textContent = "Submit";
+
+	scoreInputEl.appendChild(formEl);
+	scoreInputEl.appendChild(submitEl);
 };
 
 // ----- click to initiate quiz -----
@@ -160,6 +185,6 @@ choicesEl.addEventListener("click", function (event) {
 		replaceQuestion(questions[questionCounter]);
 	} // if there are no remaining questions in the array, end the quiz
 	else {
-		alert(`The quiz is over! Your score was ${score}`);
+		endGame();
 	}
 });

@@ -56,3 +56,10 @@ button {
     /* box model */
     margin: 20px 0;
 }
+
+/* ----- game end screen styles ----- */
+#score-input {
+    /* box model */
+    display: flex;
+    flex-direction: column;
+}
