@@ -61,7 +61,26 @@ var createQuestionEl = function (questionObj) {
 	questionEl.textContent = questionObj.question;
 };
 
+// function that compares the clicked response to the correct answer
+var checkCorrect = function (id, questionObj) {
+	console.log(questionObj.correct);
+	if (id === questionObj.correct) {
+		alert("You've picked the correct response!");
+	} else {
+		alert("That's the wrong answer!");
+	}
+};
+
 // ----- click to initiate quiz -----
 startEl.addEventListener("click", function () {
 	createQuestionEl(questions[0]);
+});
+
+// ----- click to listen for quiz responses -----
+choicesEl.addEventListener("click", function (event) {
+	// get the user response to a question and save as int
+	var id = parseInt(event.target.getAttribute("answer-id"));
+
+	// check that the response is correct with the checkCorrect function
+	checkCorrect(id, questions[0]);
 });
