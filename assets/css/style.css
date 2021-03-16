@@ -27,6 +27,12 @@ header {
     justify-content: space-between;
 }
 
+.timer {
+    /* box model */
+    display: flex;
+    flex-direction: row;
+}
+
 /* ----- main content styles ----- */
 main {
     /* box model */

@@ -111,8 +111,36 @@ var replaceQuestion = function (questionObj) {
 	d.textContent = questionObj.d;
 };
 
+// timer function that counts down 1 minute
+var countdown = function () {
+	// declare time variable starting at 60 seconds
+	var timeRemaining = 60;
+
+	var timeInterval = setInterval(function () {
+		// check if the quiz has already been ended by all questions being answered
+		if (questionCounter < questions.length) {
+			// check if the quiz time has expired
+			if (timeRemaining > 1) {
+				timeRemaining--;
+				timeEl.textContent = timeRemaining + "s";
+			} else {
+				clearInterval(timeInterval);
+				timeEl.textContent = "0s";
+				alert(`The quiz is over! Your score was ${score}`);
+			}
+		} else {
+			clearInterval(timeInterval);
+			timeEl.textContent = "0s";
+		}
+	}, 1000);
+};
+
 // ----- click to initiate quiz -----
 startEl.addEventListener("click", function () {
+	// start the timer
+	countdown();
+
+	// display the first quiz question
 	createQuestionEl(questions[0]);
 });
 
