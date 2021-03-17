@@ -8,6 +8,13 @@ var scoreInputEl = document.querySelector("#score-input");
 var startEl = document.querySelector("#start-button");
 var choicesEl = document.querySelector("#choices");
 
+// create array of high scores and pull existing data from localStorage
+if (localStorage.getItem("highScores" === null)) {
+	var highScores = localStorage.getItem("highScores");
+} else {
+	var highScores = [];
+}
+
 // ----- create array of questions for quiz -----
 // TO DO: SHUFFLE THIS ARRAY SO THE ORDER IS DIFFERENT EVERY TIME
 var questions = [
@@ -158,6 +165,29 @@ var endGame = function () {
 
 	scoreInputEl.appendChild(formEl);
 	scoreInputEl.appendChild(submitEl);
+
+	// add a listener for the submit button being clicked
+	submitEl.addEventListener("click", function () {
+		// get the player's name from the form element
+		var playerName = formEl.value;
+
+		// push the player's name and the score to localStorage
+		recordScore(playerName);
+	});
+
+	// remove the submit button and show the highscores
+};
+
+// function that records the user high score
+var recordScore = function (playerName) {
+	// push the player name and score to the highScores array as an object
+	highScores.push({
+		name: playerName,
+		score: score,
+	});
+
+	// push the highScores array (in JSON) to localStorage
+	localStorage.setItem("highScores", JSON.stringify(highScores));
 };
 
 // ----- click to initiate quiz -----
