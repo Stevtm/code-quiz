@@ -1,65 +1,91 @@
 :root {
-    /* define global colour variables */
-    --primary-colour: #545c52;
-    --sectondary-colour: #c4745a;
-    --tertiary-colour: #dedbd2;
+	/* define global colour variables */
+	--primary-colour: #545c52;
+	--secondary-colour: #c4745a;
+	--tertiary-colour: #dedbd2;
 }
 
 * {
-    /* box model */
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+	/* box model */
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 /* ----- general body styles ----- */
 body {
-    /* box model */
-    height: 80vh;
-    margin: 20px;
+	/* box model */
+	height: 80vh;
 }
 
 /* ----- header styles ----- */
 header {
-    /* box model */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+	/* box model */
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 10px 20px;
+
+	/* typography */
+	font-size: 1.1em;
 }
 
 .timer {
-    /* box model */
-    display: flex;
-    flex-direction: row;
+	/* box model */
+	display: flex;
+	flex-direction: row;
 }
 
 /* ----- main content styles ----- */
 main {
-    /* box model */
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 80%;
-    justify-content: center;
-    margin: 20px 0;
+	/* box model */
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 80%;
+	justify-content: center;
+	margin: 20px 0;
 
-    /* typography */
-    text-align: center;
+	/* typography */
+	text-align: center;
 }
 
 h1 {
-    /* box model */
-    margin: 20px 0;
+	/* box model */
+	display: flex;
+	flex-direction: column;
+	height: 200px;
+	justify-content: flex-end;
+	margin-bottom: 20px;
+	padding-bottom: 40px;
+	width: 100%;
+
+	/* typography */
+	font-weight: 500;
+
+	/* visual decorations */
+	color: white;
+}
+
+h2 {
+	/* box model */
+	margin: 0 18px;
+
+	/* typography */
+	font-size: 1.3em;
+	font-weight: 400;
 }
 
 button {
-    /* box model */
-    margin: 20px 0;
+	/* box model */
+	margin: 20px 0;
 }
+
+/* ----- list item (question answer) styles */
 
 /* ----- game end screen styles ----- */
 #score-input {
-    /* box model */
-    display: flex;
-    flex-direction: column;
+	/* box model */
+	display: flex;
+	flex-direction: column;
 }
