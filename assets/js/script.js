@@ -4,15 +4,18 @@ var headerEl = document.querySelector("header");
 var titleEl = document.querySelector("#title");
 var timeEl = document.querySelector("#time-remaining");
 var questionEl = document.querySelector("#question");
+var highScoresEl = document.querySelector("#high-scores");
 var scoreInputEl = document.querySelector("#score-input");
 var startEl = document.querySelector("#start-button");
 var choicesEl = document.querySelector("#choices");
 
 // create array of high scores and pull existing data from localStorage
-if (localStorage.getItem("highScores" === null)) {
-	var highScores = localStorage.getItem("highScores");
+var highScores = localStorage.getItem("highScores");
+
+if (!highScores) {
+	highScores = [];
 } else {
-	var highScores = [];
+	highScores = JSON.parse(highScores);
 }
 
 // ----- create array of questions for quiz -----
@@ -173,9 +176,14 @@ var endGame = function () {
 
 		// push the player's name and the score to localStorage
 		recordScore(playerName);
-	});
 
-	// remove the submit button and show the highscores
+		// remove the submit button and form
+		submitEl.remove();
+		formEl.remove();
+
+		// show the high scores
+		showHighScores();
+	});
 };
 
 // function that records the user high score
@@ -188,6 +196,50 @@ var recordScore = function (playerName) {
 
 	// push the highScores array (in JSON) to localStorage
 	localStorage.setItem("highScores", JSON.stringify(highScores));
+};
+
+// function that shows high scores
+var showHighScores = function () {
+	// change the content of the h2 element
+	question.textContent = "High Scores";
+
+	// declare and populate an array with the top 5 scores
+	var topScores = highScores;
+
+	// sort the topScores array in descending order
+	topScores.sort(function (a, b) {
+		return b.score - a.score;
+	});
+
+	// slice the topScores array to include only the top 5 scores
+	topScores = topScores.slice(0, 5);
+
+	// insert table onto DOM
+	createHighScoreTable(topScores);
+};
+
+// function that inserts a table of high scores
+var createHighScoreTable = function (topScores) {
+	// create the table header and append to table element
+	var tableHeaderEl = document.createElement("tr");
+	tableHeaderEl.innerHTML = "<th>Player Name</th><th>Score</th>";
+	highScoresEl.appendChild(tableHeaderEl);
+
+	// create a row for each of the highscores
+	for (var i = 0; i < topScores.length; i++) {
+		// create a tr and td elements
+		var tableEl = document.createElement("tr");
+		var tableNameEl = document.createElement("td");
+		var tableScoreEl = document.createElement("td");
+
+		tableNameEl.textContent = topScores[i].name;
+		tableScoreEl.textContent = topScores[i].score;
+
+		tableEl.appendChild(tableNameEl);
+		tableEl.appendChild(tableScoreEl);
+
+		highScoresEl.appendChild(tableEl);
+	}
 };
 
 // ----- click to initiate quiz -----
