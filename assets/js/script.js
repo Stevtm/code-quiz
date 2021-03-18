@@ -18,6 +18,9 @@ if (!highScores) {
 	highScores = JSON.parse(highScores);
 }
 
+// declare time variable starting at 60 seconds
+var timeRemaining = 60;
+
 // ----- create array of questions for quiz -----
 // TO DO: SHUFFLE THIS ARRAY SO THE ORDER IS DIFFERENT EVERY TIME
 var questions = [
@@ -101,6 +104,7 @@ var checkCorrect = function (id, questionObj) {
 		score++;
 		alert("You've picked the correct response!");
 	} else {
+		timeRemaining -= 10;
 		alert("That's the wrong answer!");
 	}
 };
@@ -125,9 +129,6 @@ var replaceQuestion = function (questionObj) {
 
 // timer function that counts down 1 minute
 var countdown = function () {
-	// declare time variable starting at 60 seconds
-	var timeRemaining = 60;
-
 	var timeInterval = setInterval(function () {
 		// check if the quiz has already been ended by all questions being answered
 		if (questionCounter < questions.length) {
