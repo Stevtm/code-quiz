@@ -224,19 +224,29 @@ var endGame = function () {
 
 	// add a listener for the submit button being clicked
 	submitEl.addEventListener("click", function () {
-		// get the player's name from the form element
-		var playerName = formEl.value;
+		getPlayerName(formEl, submitEl);
+	});
+};
 
+// function that gets the player's name from the input field
+var getPlayerName = function (formEl, buttonEl) {
+	// get the player's name from the form
+	var playerName = formEl.value;
+
+	// check if the form is blank
+	if (playerName === "") {
+		alert("Please enter your name!");
+	} else {
 		// push the player's name and the score to localStorage
 		recordScore(playerName);
 
 		// remove the submit button and form
-		submitEl.remove();
+		buttonEl.remove();
 		formEl.remove();
 
 		// show the high scores
 		showHighScores();
-	});
+	}
 };
 
 // function that records the user high score
