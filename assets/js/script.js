@@ -18,8 +18,8 @@ if (!highScores) {
 	highScores = JSON.parse(highScores);
 }
 
-// declare time variable starting at 60 seconds
-var timeRemaining = 60;
+// declare time variable starting at 45 seconds
+var timeRemaining = 45;
 
 // ----- create array of questions for quiz -----
 // TO DO: SHUFFLE THIS ARRAY SO THE ORDER IS DIFFERENT EVERY TIME
