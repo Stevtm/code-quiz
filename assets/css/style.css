@@ -69,23 +69,44 @@ h1 {
 
 h2 {
 	/* box model */
-	margin: 0 18px;
+	margin: 0px 18px 20px 18px;
 
 	/* typography */
 	font-size: 1.3em;
 	font-weight: 400;
 }
 
-button {
-	/* box model */
-	margin: 20px 0;
-}
-
 /* ----- list item (question answer) styles */
 
+ul {
+	/* box model */
+	padding: 0;
+	width: 80%;
+
+	/* visual decorations */
+	list-style: none;
+}
+
+li {
+	/* box model */
+	margin: 5px 0;
+	width: 100%;
+}
 /* ----- game end screen styles ----- */
 #score-input {
 	/* box model */
+	border-radius: 0.25rem;
 	display: flex;
 	flex-direction: column;
+}
+
+.score-btn {
+	/* box model */
+	margin-top: 20px;
+	width: 75px;
+}
+
+table {
+	/* box model */
+	width: 90%;
 }

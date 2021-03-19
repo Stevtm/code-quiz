@@ -76,7 +76,7 @@ var createQuestionEl = function (questionObj) {
 	for (var i = 0; i < options.length; i++) {
 		// create list item
 		var listItemEl = document.createElement("li");
-		listItemEl.className = "answer-option";
+		listItemEl.className = "btn btn-secondary";
 
 		// add the answer id (the array index + 1) as a custom attribute
 		listItemEl.setAttribute("answer-id", i + 1);
@@ -165,6 +165,7 @@ var endGame = function () {
 	var formEl = document.createElement("input");
 	var submitEl = document.createElement("button");
 	submitEl.setAttribute("type", "submit");
+	submitEl.className = "score-btn btn btn-primary";
 	submitEl.textContent = "Submit";
 
 	scoreInputEl.appendChild(formEl);
@@ -222,25 +223,36 @@ var showHighScores = function () {
 // function that inserts a table of high scores
 var createHighScoreTable = function (topScores) {
 	// create the table header and append to table element
-	var tableHeaderEl = document.createElement("tr");
-	tableHeaderEl.innerHTML = "<th>Player Name</th><th>Score</th>";
+	var tableHeaderEl = document.createElement("thead");
+	var tableHeaderRowEl = document.createElement("tr");
+	tableHeaderRowEl.innerHTML =
+		"<th scope='col'>#</th> <th scope='col'>Player Name</th> <th scope='col'>Score</th>";
+	tableHeaderEl.appendChild(tableHeaderRowEl);
 	highScoresEl.appendChild(tableHeaderEl);
 
+	// create table body element
+	var tableBodyEl = document.createElement("tbody");
 	// create a row for each of the highscores
 	for (var i = 0; i < topScores.length; i++) {
 		// create a tr and td elements
 		var tableEl = document.createElement("tr");
+		var tableIndexEl = document.createElement("th");
+		tableIndexEl.setAttribute("scope", "row");
 		var tableNameEl = document.createElement("td");
 		var tableScoreEl = document.createElement("td");
 
+		tableIndexEl.textContent = (i + 1).toString();
 		tableNameEl.textContent = topScores[i].name;
 		tableScoreEl.textContent = topScores[i].score;
 
+		tableEl.appendChild(tableIndexEl);
 		tableEl.appendChild(tableNameEl);
 		tableEl.appendChild(tableScoreEl);
 
-		highScoresEl.appendChild(tableEl);
+		tableBodyEl.appendChild(tableEl);
 	}
+
+	highScoresEl.appendChild(tableBodyEl);
 };
 
 // ----- click to initiate quiz -----
