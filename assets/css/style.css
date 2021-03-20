@@ -121,3 +121,8 @@ table {
 	max-width: 500px;
 	width: 90%;
 }
+
+.play-again {
+	/* box model */
+	margin-top: 15px;
+}

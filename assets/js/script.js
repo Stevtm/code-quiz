@@ -6,6 +6,7 @@ var timeEl = document.querySelector("#time-remaining");
 var questionEl = document.querySelector("#question");
 var highScoresEl = document.querySelector("#high-scores");
 var scoreInputEl = document.querySelector("#score-input");
+var playAgainEl = document.querySelector("#play-again");
 var startEl = document.querySelector("#start-button");
 var choicesEl = document.querySelector("#choices");
 
@@ -348,6 +349,17 @@ var createHighScoreTable = function (topScores) {
 	highScoresEl.appendChild(tableBodyEl);
 };
 
+// function that adds the "play again" button to the high scores screen
+var playAgain = function () {
+	// create button
+	var playAgainBtn = document.createElement("button");
+	playAgainBtn.className = "btn btn-success";
+	playAgainBtn.textContent = "Play Again";
+
+	// append button to the play again div
+	playAgainEl.appendChild(playAgainBtn);
+};
+
 // function that shows high scores
 var showHighScores = function () {
 	// change the content of the h1 element and remove h2 element
@@ -365,6 +377,9 @@ var showHighScores = function () {
 	// slice the topScores array to include only the top 5 scores
 	topScores = topScores.slice(0, 5);
 
-	// insert table onto DOM
+	// render table onto DOM
 	createHighScoreTable(topScores);
+
+	// render play again button onto DOM
+	playAgain();
 };
