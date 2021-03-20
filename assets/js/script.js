@@ -9,20 +9,19 @@ var scoreInputEl = document.querySelector("#score-input");
 var startEl = document.querySelector("#start-button");
 var choicesEl = document.querySelector("#choices");
 
-// create array of high scores and pull existing data from localStorage
-var highScores = localStorage.getItem("highScores");
+// pull high scores from localStorage and store them in an array
+var highScores = JSON.parse(localStorage.getItem("highScores"));
 
+// if there is nothing in localstorage, create an empty array
 if (!highScores) {
 	highScores = [];
-} else {
-	highScores = JSON.parse(highScores);
 }
 
 // declare time variable starting at 45 seconds
 var timeRemaining = 45;
 
-// ----- create array of questions for quiz -----
-// TO DO: SHUFFLE THIS ARRAY SO THE ORDER IS DIFFERENT EVERY TIME
+// ----- create array of randomized questions for quiz -----
+// declare array with questions & answers (unshuffled)
 var questions = [
 	{
 		question: "Arrays in JavaScript can be used to store which data types?",
@@ -108,6 +107,11 @@ var questions = [
 		correct: 3,
 	},
 ];
+
+// shuffle the array
+questions = questions.sort(function () {
+	return Math.random() - 0.5;
+});
 
 // create a counter that tracks the current position in the questions array
 var questionCounter = 0;
