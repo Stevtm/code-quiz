@@ -327,6 +327,13 @@ startEl.addEventListener("click", function () {
 
 // ----- click to listen for quiz responses -----
 choicesEl.addEventListener("click", function (event) {
+	var target = event.target;
+
+	// check that the click was on one of the <li> elements
+	if (target.getAttribute("answer-id") === null) {
+		return;
+	}
+
 	// get the user response to a question and save as int
 	var id = parseInt(event.target.getAttribute("answer-id"));
 
