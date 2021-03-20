@@ -95,7 +95,7 @@ li {
 	max-width: 400px;
 	width: 100%;
 }
-/* ----- game end screen styles ----- */
+/* ----- game end / high score screen styles ----- */
 #score-input {
 	/* box model */
 	border-radius: 0.25rem;
