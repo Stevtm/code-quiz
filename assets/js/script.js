@@ -142,9 +142,9 @@ var createQuestionEl = function (questionObj) {
 		choicesEl.appendChild(listItemEl);
 	}
 
-	// remove the page header and the start button from the DOM
-	titleEl.remove();
+	// remove the start button from the DOM
 	startEl.remove();
+	titleEl.style.height = "0px";
 
 	// replace the h2 element content with the question
 	questionEl.textContent = questionObj.question;
@@ -349,8 +349,10 @@ var createHighScoreTable = function (topScores) {
 
 // function that shows high scores
 var showHighScores = function () {
-	// change the content of the h2 element
-	question.textContent = "High Scores";
+	// change the content of the h1 element and remove h2 element
+	titleEl.textContent = "High Scores";
+	titleEl.style.height = "150px";
+	questionEl.remove();
 
 	// declare and populate an array with the top 5 scores
 	var topScores = highScores;

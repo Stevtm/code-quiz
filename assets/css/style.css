@@ -15,7 +15,7 @@
 /* ----- general body styles ----- */
 body {
 	/* box model */
-	height: 80vh;
+	height: 50vh;
 }
 
 /* ----- header styles ----- */
@@ -54,10 +54,10 @@ h1 {
 	/* box model */
 	display: flex;
 	flex-direction: column;
-	height: 200px;
+	height: 150px;
 	justify-content: flex-end;
 	margin-bottom: 20px;
-	padding-bottom: 40px;
+	padding-bottom: 5px;
 	width: 100%;
 
 	/* typography */
