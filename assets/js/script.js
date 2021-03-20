@@ -144,7 +144,6 @@ var createQuestionEl = function (questionObj) {
 
 	// remove the start button from the DOM
 	startEl.remove();
-	titleEl.style.height = "0px";
 
 	// replace the h2 element content with the question
 	questionEl.textContent = questionObj.question;
@@ -255,6 +254,8 @@ var endGame = function () {
 	headerEl.remove();
 	choicesEl.remove();
 
+	titleEl.style.marginTop = "78px";
+
 	// replace the h2 element content with a score saving prompt
 	questionEl.textContent =
 		"The game is over! Please enter your name to record your score.";
@@ -351,7 +352,6 @@ var createHighScoreTable = function (topScores) {
 var showHighScores = function () {
 	// change the content of the h1 element and remove h2 element
 	titleEl.textContent = "High Scores";
-	titleEl.style.height = "150px";
 	questionEl.remove();
 
 	// declare and populate an array with the top 5 scores

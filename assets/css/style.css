@@ -12,19 +12,15 @@
 	padding: 0;
 }
 
-/* ----- general body styles ----- */
-body {
-	/* box model */
-	height: 50vh;
-}
-
 /* ----- header styles ----- */
 header {
 	/* box model */
+	align-items: center;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	padding: 10px 20px;
+	margin: 10px 0;
 
 	/* typography */
 	font-size: 1.1em;
@@ -32,8 +28,19 @@ header {
 
 .timer {
 	/* box model */
+	align-items: center;
 	display: flex;
 	flex-direction: row;
+}
+
+a {
+	/* visual decorations */
+	color: white;
+	text-decoration: none;
+}
+
+p {
+	margin: 0;
 }
 
 /* ----- main content styles ----- */
@@ -44,7 +51,7 @@ main {
 	flex-direction: column;
 	height: 80%;
 	justify-content: center;
-	margin: 20px 0;
+	margin-bottom: 20px;
 
 	/* typography */
 	text-align: center;
@@ -57,7 +64,7 @@ h1 {
 	height: 150px;
 	justify-content: flex-end;
 	margin-bottom: 20px;
-	padding-bottom: 5px;
+	padding-bottom: 20px;
 	width: 100%;
 
 	/* typography */
@@ -69,7 +76,7 @@ h1 {
 
 h2 {
 	/* box model */
-	margin: 0px 18px 20px 18px;
+	margin: 0px 18px 5px 18px;
 
 	/* typography */
 	font-size: 1.3em;
